@@ -3,9 +3,7 @@ plugins {
     id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
-springBoot {
-    mainClass = "boot;"
-}
+
 
 // constants declaration
 ext {

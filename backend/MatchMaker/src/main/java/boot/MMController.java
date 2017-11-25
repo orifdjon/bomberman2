@@ -30,7 +30,7 @@ import static com.google.common.collect.ComparisonChain.start;
 public class MMController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
     List<Connection> candidates = new ArrayList<>(GameSession.PLAYERS_IN_GAME);
-    private static long gameId = 0;
+    private static String gameId = null;
     private static int playerCounter = 0;
     private static int START_GAME = 4;
     private static int CREATE_GAME = 1;
@@ -53,23 +53,23 @@ public class MMController {
     public ResponseEntity<String> join(@RequestParam("name") String name) throws IOException {
 
 
-        if (gameId == 0) {
+        if (gameId == null) {
             Response response = Requests.create(4);//нужно
 
-            gameId = Long.getLong(response.body().toString());// надо будет присовить gameId, т.е. response
+            gameId = response.body().string();// надо будет присовить gameId, т.е. response
             candidates.add(new Connection(name));
             ConnectionQueue.getInstance().offer(new Connection(name));
         } else {
             candidates.add(new Connection(name));
             ConnectionQueue.getInstance().offer(new Connection(name));
-            if (candidates.size() == CREATE_GAME) {
-                start();//
-                gameId = 0;
+            if (candidates.size() == START_GAME) {
+                Requests.start(42);//
+                gameId = null;
                 candidates.clear();
             }
         }
 
-        return ResponseEntity.ok().body(Long.toString(gameId));
+        return ResponseEntity.ok().body(gameId);
     }
 
 
