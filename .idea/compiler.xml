@@ -6,6 +6,8 @@
       <module name="backend_MatchMaker_test" target="1.8" />
       <module name="bomberman_main" target="1.8" />
       <module name="bomberman_test" target="1.8" />
+      <module name="controller_main" target="1.8" />
+      <module name="controller_test" target="1.8" />
       <module name="frontend_main" target="1.8" />
       <module name="frontend_test" target="1.8" />
       <module name="mm_main" target="1.8" />
