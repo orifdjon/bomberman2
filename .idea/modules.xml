@@ -3,15 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Texnoatom-bomberman.iml" filepath="$PROJECT_DIR$/.idea/modules/Texnoatom-bomberman.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker.iml" group="backend/MatchMaker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_main.iml" group="backend/MatchMaker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_test.iml" group="backend/MatchMaker" />
       <module fileurl="file://$PROJECT_DIR$/bomberman.iml" filepath="$PROJECT_DIR$/bomberman.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bomberman_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bomberman_main.iml" group="bomberman" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bomberman_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bomberman_test.iml" group="bomberman" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend/frontend.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend/frontend.iml" group="frontend" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend/frontend_main.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend/frontend_main.iml" group="frontend" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/frontend/frontend_test.iml" filepath="$PROJECT_DIR$/.idea/modules/frontend/frontend_test.iml" group="frontend" />
-      <module fileurl="file://$PROJECT_DIR$/mm/mm.iml" filepath="$PROJECT_DIR$/mm/mm.iml" group="mm" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/mm_main.iml" group="mm" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/mm_test.iml" group="mm" />
     </modules>
   </component>
 </project>

@@ -1,8 +1,9 @@
-package ru.atom.thread.mm;
+package thread;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
+import org.slf4j.LoggerFactory;
+
+import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * Created by sergey on 3/14/17.
  */
 public class MatchMaker implements Runnable {
-    private static final Logger log = LogManager.getLogger(MatchMaker.class);
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(MatchMaker.class);
 
 
     @Override
@@ -29,7 +30,7 @@ public class MatchMaker implements Runnable {
 
             if (candidates.size() == GameSession.PLAYERS_IN_GAME) {
                 GameSession session = new GameSession(candidates.toArray(new Connection[0]));
-                log.info(session);
+                log.info(session.toString());
                 GameRepository.put(session);
                 candidates.clear();
             }

@@ -1,8 +1,7 @@
-package ru.atom.mm;
+package boot;
 
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,16 +12,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import thread.Connection;
 import thread.ConnectionQueue;
-import thread.GameSession;
 
 import java.util.ArrayList;
-import java.util.concurrent.BlockingQueue;
+
 
 
 @Controller
 @RequestMapping("/connection")
 public class ConnectionController {
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ChatController.class);
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
 
 
     /**

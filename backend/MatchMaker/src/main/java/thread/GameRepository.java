@@ -1,4 +1,4 @@
-package ru.atom.thread.mm;
+package thread;
 
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;

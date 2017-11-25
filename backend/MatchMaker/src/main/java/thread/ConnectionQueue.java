@@ -1,4 +1,4 @@
-package ru.atom.thread.mm;
+package thread;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

@@ -1,4 +1,4 @@
-package ru.atom.thread.mm;
+package thread;
 
 /**
  * Created by sergey on 3/14/17.
