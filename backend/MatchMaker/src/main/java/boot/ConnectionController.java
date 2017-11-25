@@ -2,6 +2,7 @@ package boot;
 
 
 
+import okhttp3.OkHttpClient;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,11 +15,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import thread.Connection;
 import thread.ConnectionQueue;
 import thread.GameSession;
-import thread.MatchMaker;
 
-import javax.xml.ws.Response;
+import okhttp3.Response;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.common.collect.ComparisonChain.start;
 
 
 @Controller
@@ -26,9 +29,10 @@ import java.util.List;
 public class ConnectionController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
     List<Connection> candidates = new ArrayList<>(GameSession.PLAYERS_IN_GAME);
-    private long gameId = 0;
-    private int START_GAME = 4;
-    private int CREATE_GAME = 1;
+    private static long gameId = 0;
+    private static int START_GAME = 4;
+    private static int CREATE_GAME = 1;
+
 
 
 
@@ -48,9 +52,9 @@ public class ConnectionController {
 
 
         if (gameId == 0) {
+            Response response = Requests.create();
 
-
-            gameId = create();//
+            gameId = (long) response.toString();// надо будет присовить gameId, т.е. response
             candidates.add(new Connection(name));
             ConnectionQueue.getInstance().offer(new Connection(name));
         } else {
@@ -66,26 +70,7 @@ public class ConnectionController {
         return ResponseEntity.ok().body(Long.toString(gameId));
     }
 
-    /**
-     * curl test
-     * <p>
-     * curl -i localhost:8080/connection/list'
-     * </p>
-     */
-    @RequestMapping(
-            path = "create",
-            method = RequestMethod.GET,
-            consumes = MediaType.TEXT_PLAIN_VALUE
-    )
-    public String list() {
-        java.util.List<String> arrayList = new ArrayList<>();
-        String name = new String("");
-        for (Connection connection : ConnectionQueue.getInstance()) {
-            name += connection.getName() + " ";
-        }
-        return name;
 
-    }
 
 
 }

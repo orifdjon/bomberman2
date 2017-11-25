@@ -3,6 +3,7 @@ dependencies {
 	compile rootProject.libraries.postgres
 	compile rootProject.libraries.jetbrainsAnnotations
 	compile rootProject.libraries.hibernate
+	compile rootProject.libraries.okhttp
 
 	testCompile rootProject.libraries.junit
 	testCompile rootProject.libraries.spring_boot_test
