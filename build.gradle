@@ -4,7 +4,7 @@ plugins {
 }
 
 springBoot {
-    mainClass = "ru.atom.mm;"
+    mainClass = "boot;"
 }
 
 // constants declaration

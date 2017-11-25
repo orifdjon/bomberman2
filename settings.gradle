@@ -1,4 +1,3 @@
 rootProject.name = 'bomberman'
 
-include 'frontend'
-include 'mm'
+include 'backend/MatchMaker'

@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import ru.atom.thread.mm.Connection;
-import ru.atom.thread.mm.ConnectionQueue;
-import ru.atom.thread.mm.GameSession;
+import thread.Connection;
+import thread.ConnectionQueue;
+import thread.GameSession;
 
 import java.util.ArrayList;
 import java.util.concurrent.BlockingQueue;
