@@ -1,3 +1,4 @@
 rootProject.name = 'bomberman'
 
 include 'frontend'
+include 'mm'
