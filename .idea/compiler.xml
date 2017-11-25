@@ -2,6 +2,10 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="backend_controller_main" target="1.8" />
+      <module name="backend_controller_main~1" target="1.8" />
+      <module name="backend_controller_test" target="1.8" />
+      <module name="backend_controller_test~1" target="1.8" />
       <module name="backend_MatchMaker_main" target="1.8" />
       <module name="backend_MatchMaker_test" target="1.8" />
       <module name="bomberman_main" target="1.8" />
