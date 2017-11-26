@@ -12,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 
-/**
- * Created by sergey on 3/15/17.
- */
+
 
 @Controller
 @RequestMapping("/game")
@@ -22,9 +20,7 @@ public class GameController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ControllerApplication.class);
 
     /**
-     * curl test
-     * <p>
-     * curl -i localhost:8080/game/create</p>
+     * curl -i localhost:8090/game/create
      */
     @RequestMapping(
             path = "/create",

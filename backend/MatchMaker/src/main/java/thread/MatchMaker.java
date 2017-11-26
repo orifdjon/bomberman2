@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by sergey on 3/14/17.
- */
+
 public class MatchMaker implements Runnable {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(MatchMaker.class);
 

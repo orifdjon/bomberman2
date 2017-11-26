@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.collect.ComparisonChain.start;
 
 
 @Controller
@@ -30,20 +29,16 @@ import static com.google.common.collect.ComparisonChain.start;
 public class MMController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
     List<Connection> candidates = new ArrayList<>(GameSession.PLAYERS_IN_GAME);
+
     private static String gameId = null;
     private static int playerCounter = 0;
     private static int START_GAME = 4;
     private static int CREATE_GAME = 1;
 
-
-
-
     /**
-     *
-     * <p>
-     * <p>
      * curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" \
      * localhost:8080/matchmaker/join -d 'name=bomberman'
+     * we have defoult gameId = 42
      */
     @RequestMapping(
             path = "join",

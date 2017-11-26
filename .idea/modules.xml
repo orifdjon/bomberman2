@@ -5,11 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker.iml" group="backend/MatchMaker" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_main.iml" group="backend/MatchMaker" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_test.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/MatchMaker/backend_MatchMaker_test.iml" group="backend/MatchMaker" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/controller/backend_controller.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/controller/backend_controller.iml" group="backend/controller" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/controller/backend_controller_main.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/controller/backend_controller_main.iml" group="backend/controller" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/backend/controller/backend_controller_test.iml" filepath="$PROJECT_DIR$/.idea/modules/backend/controller/backend_controller_test.iml" group="backend/controller" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bomberman.iml" filepath="$PROJECT_DIR$/.idea/modules/bomberman.iml" />
-      <module fileurl="file://$PROJECT_DIR$/bomberman.iml" filepath="$PROJECT_DIR$/bomberman.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bomberman_main.iml" filepath="$PROJECT_DIR$/.idea/modules/bomberman_main.iml" group="bomberman" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/bomberman_test.iml" filepath="$PROJECT_DIR$/.idea/modules/bomberman_test.iml" group="bomberman" />
       <module fileurl="file://$PROJECT_DIR$/controller/controller.iml" filepath="$PROJECT_DIR$/controller/controller.iml" />
