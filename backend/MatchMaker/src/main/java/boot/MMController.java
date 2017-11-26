@@ -19,8 +19,8 @@ import thread.GameSession;
 import okhttp3.Response;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 
@@ -28,13 +28,10 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/matchmaker")
 public class MMController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
-    List<Connection> candidates = new ArrayList<>(GameSession.PLAYERS_IN_GAME);
 
     private static String gameId = null;
     private static AtomicLong idGenerator = new AtomicLong();
-    private static int playerCounter = 0;
-    private static int START_GAME = 4;
-    private static int CREATE_GAME = 1;
+    private static final int MAX_PLAYER_IN_GAME = 4;
 
     /**
      * curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" \
@@ -50,17 +47,16 @@ public class MMController {
 
 
         if (gameId == null) {
-            Response response = Requests.create(GameSession.PLAYERS_IN_GAME);
+            Response response = Requests.create(MAX_PLAYER_IN_GAME);
             gameId = response.body().string();// надо будет присовить gameId, т.е. response
-            candidates.add(new Connection(idGenerator.getAndIncrement(), name));
             ConnectionQueue.getInstance().offer(new Connection(idGenerator.getAndIncrement(), name));
         } else {
-            candidates.add(new Connection(idGenerator.getAndIncrement(),name));
             ConnectionQueue.getInstance().offer(new Connection(idGenerator.getAndIncrement(), name));
-            if (candidates.size() == START_GAME) {
-                Requests.start(42);//
+            if (ConnectionQueue.getInstance().size() == MAX_PLAYER_IN_GAME) {
+                Requests.start(gameId);//
                 gameId = null;
-                candidates.clear();
+                ConnectionQueue.getInstance().clear();
+
             }
         }
 
