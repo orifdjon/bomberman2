@@ -7,6 +7,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class ConnectionProducer implements Runnable {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ConnectionProducer.class);
     private static final String[] names = {"John", "Paul", "George", "Someone else"};
+    private static AtomicLong idGenerator = new AtomicLong();
 
     private static AtomicLong id = new AtomicLong();
 
@@ -15,7 +16,7 @@ public class ConnectionProducer implements Runnable {
         while (!Thread.currentThread().isInterrupted()) {
             long newId = id.getAndIncrement();
 
-            ConnectionQueue.getInstance().offer(new Connection(names[(int) (names.length)]));
+            ConnectionQueue.getInstance().offer(new Connection(idGenerator.getAndIncrement(),names[(int) (names.length)]));
             log.info("Connection {} added.", newId);
             try {
                 Thread.sleep(1_000);

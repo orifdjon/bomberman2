@@ -1,17 +1,11 @@
 package thread;
 
+import org.springframework.data.repository.CrudRepository;
+
 import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
 
-public class GameRepository  {
-    private static ConcurrentHashMap<Long, GameSession> map = new ConcurrentHashMap<>();
+public interface GameRepository extends CrudRepository<Connection, Integer> { // это пока не точно
 
-    public static void put(GameSession session) {
-        map.put(session.getId(), session);
-    }
-
-    public static Collection<GameSession> getAll() {
-        return map.values();
-    }
 }

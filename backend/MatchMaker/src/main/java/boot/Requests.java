@@ -12,7 +12,7 @@ public class Requests {
     static final String PORT = ":8090";
 
 
-    static Response create(int playerCounter) throws IOException {
+    static Response create(final int playerCounter) throws IOException {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, "playerCount={" + playerCounter + "}"))
@@ -21,7 +21,7 @@ public class Requests {
         return client.newCall(request).execute();
     }
 
-    static Response start(long gameId) throws IOException {
+    static Response start(final long gameId) throws IOException {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, "gameId={" + gameId + "}"))

@@ -29,7 +29,7 @@ public class MatchMaker implements Runnable {
             if (candidates.size() == GameSession.PLAYERS_IN_GAME) {
                 GameSession session = new GameSession(candidates.toArray(new Connection[0]));
                 log.info(session.toString());
-                GameRepository.put(session);
+                //GameRepository.put(session);
                 candidates.clear();
             }
         }
