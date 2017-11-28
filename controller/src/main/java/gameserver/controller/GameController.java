@@ -18,10 +18,19 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/game")
 public class GameController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ControllerApplication.class);
+    private static final int connectedPlayerCount =  4; //когда буду делать правильно, поставить на 0
 
     /**
      * curl -i localhost:8090/game/create
      */
+    @RequestMapping(
+            path = "/checkstatus",
+            method = RequestMethod.GET,
+            produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<String> checkStatus() {
+        return ResponseEntity.ok().body(new Integer(connectedPlayerCount).toString());//возращает gameId
+    }
     @RequestMapping(
             path = "/create",
             method = RequestMethod.POST,
