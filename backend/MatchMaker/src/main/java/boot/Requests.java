@@ -7,17 +7,17 @@ import java.io.IOException;
 public class Requests {
 
     static final OkHttpClient client = new OkHttpClient();
-    static final String PROTOCOL = "http://";
-    static final String HOST = "localhost";
-    static final String PORT_GS = ":8090";
-    static final String PORT_MM = ":8080";
+    public static final String HTTP_PROTOCOL = "http://";
+    public static final String HOST = "localhost";
+    public static final String PORT_GS = ":8090";
+    public static final String PORT_MM = ":8080";
 
 
     static Response create(final int playerCounter) throws IOException {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, "playerCount={" + playerCounter + "}"))
-                .url(PROTOCOL + HOST + PORT_GS + "/game/create")
+                .url(HTTP_PROTOCOL + HOST + PORT_GS + "/game/create")
                 .build();
         return client.newCall(request).execute();
     }
@@ -26,7 +26,7 @@ public class Requests {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, "gameId={" + gameId + "}"))
-                .url(PROTOCOL + HOST + PORT_GS + "/game/start")
+                .url(HTTP_PROTOCOL + HOST + PORT_GS + "/game/start")
                 .build();
         return client.newCall(request).execute();
     }
@@ -34,7 +34,7 @@ public class Requests {
     static Response checkStatus() throws IOException {
         Request request = new Request.Builder()
                 .get()
-                .url(PROTOCOL + HOST + PORT_GS + "/game/checkstatus")
+                .url(HTTP_PROTOCOL + HOST + PORT_GS + "/game/checkstatus")
                 .addHeader("host", HOST + PORT_GS)
                 .build();
         return client.newCall(request).execute();

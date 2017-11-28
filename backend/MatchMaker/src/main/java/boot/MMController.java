@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import thread.Connection;
 
 import okhttp3.Response;
+import thread.ConnectionQueue;
 
 import java.io.IOException;
 
@@ -30,10 +31,9 @@ import java.util.concurrent.atomic.AtomicLong;
 @RequestMapping("/matchmaker")
 public class MMController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
-    private static Long gameId = null;
+    private static Integer gameId = null;
     private static AtomicLong idGenerator = new AtomicLong();
     public static final int MAX_PLAYER_IN_GAME = 4;
-    private static final List<Connection> playerList = new ArrayList<Connection>(MAX_PLAYER_IN_GAME);
 
     /**
      * curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" \
@@ -50,15 +50,15 @@ public class MMController {
         if (gameId == null) {
             log.info("Requesting GS to create a game");
 //            gameId = Long.parseLong(response.body().string()); // надо будет присовить gameId, т.е. response
-            gameId = Long.parseLong(Requests.create(MAX_PLAYER_IN_GAME).body().string());
+            gameId = Integer.parseInt(Requests.create(MAX_PLAYER_IN_GAME).body().string());
             log.info("Response of GS - gameId={}", gameId);
             startThread.setGameId(gameId);
-            playerList.add(new Connection(idGenerator.getAndIncrement(), name));
+            ConnectionQueue.getInstance().offer(new Connection(idGenerator.getAndIncrement(), name));
             log.info("Adding a new player to the list: name={}", name);
         } else {
             log.info("Adding a new player to the list: name={}", name);
-            playerList.add(new Connection(idGenerator.getAndIncrement(), name));
-            if (playerList.size() == MAX_PLAYER_IN_GAME) {
+            ConnectionQueue.getInstance().offer(new Connection(idGenerator.getAndIncrement(), name));
+            if (ConnectionQueue.getInstance().size() == MAX_PLAYER_IN_GAME) {
                 startThread.start(); //starts our thread
             }
         }
@@ -69,6 +69,6 @@ public class MMController {
 
     public static void clear() {
         gameId = null;
-        playerList.clear();
+        ConnectionQueue.getInstance().clear();
     }
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @RequestMapping("/game")
 public class GameController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(ControllerApplication.class);
-    private static final int connectedPlayerCount =  4; //когда буду делать правильно, поставить на 0
+    private static int connectedPlayerCount =  4; //когда буду делать правильно, поставить на 0
 
     /**
      * curl -i localhost:8090/game/create
@@ -49,5 +49,13 @@ public class GameController {
     public ResponseEntity<String> start(@RequestParam("gameId") String gameId) {
         log.info("Game has been started gameId={}", gameId);
         return ResponseEntity.ok().body("42"); //возращает gameId
+    }
+
+    public static int getConnectedPlayerCount() {
+        return connectedPlayerCount;
+    }
+
+    public static void setConnectedPlayerCount(int value) {
+        connectedPlayerCount = value;
     }
 }
