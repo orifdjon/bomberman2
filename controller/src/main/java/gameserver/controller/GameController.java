@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @Controller
 @RequestMapping("/game")
 public class GameController {
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(ControllerApplication.class);
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(GameController.class);
     private static int connectedPlayerCount =  4; //когда буду делать правильно, поставить на 0
 
     /**

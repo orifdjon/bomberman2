@@ -8,16 +8,8 @@ import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBr
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
 @SpringBootApplication
-@EnableScheduling
-@EnableWebSocketMessageBroker
-public class GameServerApplication extends AbstractWebSocketMessageBrokerConfigurer {
-
+public class GameServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(GameServerApplication.class, args);
-    }
-
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/game/connect").withSockJS();
     }
 }
