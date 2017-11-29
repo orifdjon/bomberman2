@@ -29,11 +29,6 @@ public class EventHandler extends TextWebSocketHandler implements WebSocketHandl
     }
 
     @Override
-    protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        log.info("Received " + message.toString());
-    }
-
-    @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
         GameController.setConnectedPlayerCount(GameController.getConnectedPlayerCount() - 1);
         log.info("Socket Closed: [" + closeStatus.getCode() + "] " + closeStatus.getReason());

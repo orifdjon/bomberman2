@@ -17,17 +17,10 @@ public class WebSocketClient {
         StandardWebSocketClient client = new StandardWebSocketClient();
         WebSocketSession session = null;
         try {
-            // The socket that receives events
             EventHandler socket = new EventHandler();
-            // Make a handshake with server
             ListenableFuture<WebSocketSession> fut = client.doHandshake(socket, uri);
-            // Wait for Connect
             session = fut.get();
-//            int counter = 0;
-//            while (session.isOpen()) {
-//                sleep(SECONDS.toMillis(1));
-//                System.out.println("Connection is opened for" + ++counter + "sec");
-//            }
+
         } catch (Throwable t) {
             t.printStackTrace(System.err);
         }

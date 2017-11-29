@@ -43,19 +43,19 @@ public class Requests {
         return client.newCall(request).execute();
     }
 
-
-    void webSocketCLient(final String gameId, final String name) {
-        String uri = WEBS_PROTOCOL + HOST + PORT_GS +
-                "/game/connect?gameId={" + gameId + "}" + "&name={" + name + "}";//адрес, по которому подключаемся
-        OkHttpClient client = new OkHttpClient(); //объявляем клиента
-        Request request = new Request.Builder().url(uri).build(); // какой смысл подключаться и ничего не спрашивать?
-        EchoWebSocketListener listener = new EchoWebSocketListener();// набор методов для взаимодействия
-
-        WebSocket ws = client.newWebSocket(request, listener);//дали понять, что клиент идет по вебсокету
-
-        client.dispatcher().executorService().shutdown(); //поработали, надо бы закрыть соединение
-
-    }
+//
+//    void webSocketCLient(final String gameId, final String name) {
+//        String uri = WEBS_PROTOCOL + HOST + PORT_GS +
+//                "/game/connect?gameId={" + gameId + "}" + "&name={" + name + "}";//адрес, по которому подключаемся
+//        OkHttpClient client = new OkHttpClient(); //объявляем клиента
+//        Request request = new Request.Builder().url(uri).build(); // какой смысл подключаться и ничего не спрашивать?
+//        EchoWebSocketListener listener = new EchoWebSocketListener();// набор методов для взаимодействия
+//
+//        WebSocket ws = client.newWebSocket(request, listener);//дали понять, что клиент идет по вебсокету
+//
+//        client.dispatcher().executorService().shutdown(); //поработали, надо бы закрыть соединение
+//
+//    }
 
 
 }
