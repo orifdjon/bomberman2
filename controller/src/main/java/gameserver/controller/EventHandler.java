@@ -21,9 +21,10 @@ public class EventHandler extends TextWebSocketHandler implements WebSocketHandl
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         super.afterConnectionEstablished(session);
         log.info("WebSocket connection established - " + session);
-        log.info("Prolonging WS connection for 60 SEC");
-        sleep(TimeUnit.SECONDS.toMillis(60));
-        log.info("Closing connection");
+        GameController.setConnectedPlayerCount(GameController.getConnectedPlayerCount() + 1);
+        log.info("Prolonging WS connection for 60 SEC for player #" + GameController.getConnectedPlayerCount());
+        sleep(TimeUnit.SECONDS.toMillis(30));
+        log.info("Closing connection for player #" + GameController.getConnectedPlayerCount());
         session.close();
     }
 
@@ -34,6 +35,7 @@ public class EventHandler extends TextWebSocketHandler implements WebSocketHandl
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus closeStatus) throws Exception {
+        GameController.setConnectedPlayerCount(GameController.getConnectedPlayerCount() - 1);
         log.info("Socket Closed: [" + closeStatus.getCode() + "] " + closeStatus.getReason());
         super.afterConnectionClosed(session, closeStatus);
     }

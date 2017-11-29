@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 @Controller
 @RequestMapping("/game")
 public class GameController {
     private static final org.slf4j.Logger log = LoggerFactory.getLogger(GameController.class);
-    private static int connectedPlayerCount =  4; //когда буду делать правильно, поставить на 0
+    private static AtomicInteger connectedPlayerCount =  new AtomicInteger(0); //когда буду делать правильно, поставить на 0
 
     /**
      * curl -i localhost:8090/game/create
@@ -29,7 +29,7 @@ public class GameController {
             produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<String> checkStatus() {
-        return ResponseEntity.ok().body(new Integer(connectedPlayerCount).toString());//возращает gameId
+        return ResponseEntity.ok().body(new Integer(connectedPlayerCount.intValue()).toString());//возращает gameId
     }
     @RequestMapping(
             path = "/create",
@@ -52,10 +52,10 @@ public class GameController {
     }
 
     public static int getConnectedPlayerCount() {
-        return connectedPlayerCount;
+        return connectedPlayerCount.intValue();
     }
 
-    public static void setConnectedPlayerCount(int value) {
-        connectedPlayerCount = value;
+    public static synchronized void setConnectedPlayerCount(int value) {
+        connectedPlayerCount.set(value);
     }
 }

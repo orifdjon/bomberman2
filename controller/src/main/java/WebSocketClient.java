@@ -23,11 +23,11 @@ public class WebSocketClient {
             ListenableFuture<WebSocketSession> fut = client.doHandshake(socket, uri);
             // Wait for Connect
             session = fut.get();
-            int counter = 0;
-            while (session.isOpen()) {
-                sleep(SECONDS.toMillis(1));
-                System.out.println("Connection is opened for" + ++counter + "sec");
-            }
+//            int counter = 0;
+//            while (session.isOpen()) {
+//                sleep(SECONDS.toMillis(1));
+//                System.out.println("Connection is opened for" + ++counter + "sec");
+//            }
         } catch (Throwable t) {
             t.printStackTrace(System.err);
         }
