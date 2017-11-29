@@ -22,9 +22,11 @@ public class EventHandler extends TextWebSocketHandler implements WebSocketHandl
         super.afterConnectionEstablished(session);
         log.info("WebSocket connection established - " + session);
         GameController.setConnectedPlayerCount(GameController.getConnectedPlayerCount() + 1);
-        log.info("Prolonging WS connection for 60 SEC for player #" + GameController.getConnectedPlayerCount());
+        String str = session.getUri().toString();
+        String str2 = str.substring(str.lastIndexOf("name=", str.length()));
+        log.info("Prolonging WS connection for 60 SEC for player," + "asd");
         sleep(TimeUnit.SECONDS.toMillis(30));
-        log.info("Closing connection for player #" + GameController.getConnectedPlayerCount());
+        log.info("Closing connection for player #" + "asd");
         session.close();
     }
 

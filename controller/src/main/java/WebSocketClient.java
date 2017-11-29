@@ -10,9 +10,10 @@ import static java.lang.Thread.sleep;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class WebSocketClient {
+    private static final String name = "asd";
     public static void main(String[] args) {
         // connection url
-        String uri = "ws://localhost:8090/game/connect";
+        String uri = "ws://localhost:8090/game/connect?gameId=" + 42 + "&name=" + name;
 
         StandardWebSocketClient client = new StandardWebSocketClient();
         WebSocketSession session = null;
