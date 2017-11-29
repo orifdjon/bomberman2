@@ -1,11 +1,9 @@
-/*
-package boot;
+package ru.bomber.game.mm;
 
 import okhttp3.*;
 
-
 import java.io.IOException;
-import java.net.URI;
+
 
 public class Requests {
 
@@ -60,4 +58,3 @@ public class Requests {
 
 
 }
-*/

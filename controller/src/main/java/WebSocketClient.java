@@ -10,7 +10,7 @@ import static java.lang.Thread.sleep;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class WebSocketClient {
-    private static final String name = "asd";
+    private static final String name = "c";
     public static void main(String[] args) {
         // connection url
         String uri = "ws://localhost:8090/game/connect?gameId=" + 42 + "&name=" + name;

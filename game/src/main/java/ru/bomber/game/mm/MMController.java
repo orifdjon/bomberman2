@@ -1,11 +1,9 @@
-/*
 
-package boot;
+package ru.bomber.game.mm;
 
 
-import com.sun.jna.platform.unix.X11;
-import okhttp3.Request;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,35 +12,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import thread.Connection;
-
-import okhttp3.Response;
-import thread.ConnectionQueue;
+import ru.bomber.game.GameApplication;
+import ru.bomber.game.service.BomberService;
 
 import java.io.IOException;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.concurrent.ConcurrentMap;
+import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
-
 
 @Controller
 @RequestMapping("/matchmaker")
 public class MMController {
-    private static final org.slf4j.Logger log = LoggerFactory.getLogger(MmApplication.class);
+    private static final org.slf4j.Logger log = LoggerFactory.getLogger(GameApplication.class);
     private static Integer gameId = null;
     private static AtomicLong idGenerator = new AtomicLong();
     public static final int MAX_PLAYER_IN_GAME = 4;
 
-    */
-/**
+    @Autowired
+    private BomberService bomberService;
+    /**
      * curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" \
      * localhost:8080/matchmaker/join -d 'name=bomberman'
      * we have default gameId = 42
-     *//*
-
+     */
     @RequestMapping(
             path = "join",
             method = RequestMethod.POST,
@@ -63,6 +54,9 @@ public class MMController {
             ConnectionQueue.getInstance().offer(new Connection(idGenerator.getAndIncrement(), name));
             if (ConnectionQueue.getInstance().size() == MAX_PLAYER_IN_GAME) {
                 startThread.start(); //starts our thread
+                startThread.suspendThread();
+                bomberService.addToDB(gameId, ConnectionQueue.getInstance(), new Date());
+
             }
         }
         log.info("Responding with gameID to the player={}, gameID={}", name, gameId);
@@ -75,4 +69,3 @@ public class MMController {
         ConnectionQueue.getInstance().clear();
     }
 }
-*/

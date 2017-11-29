@@ -1,12 +1,12 @@
-/*
-package boot;
+package ru.bomber.game.mm;
 
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 
-import static boot.MMController.MAX_PLAYER_IN_GAME;
+
 import static java.util.concurrent.TimeUnit.SECONDS;
+import static ru.bomber.game.mm.MMController.MAX_PLAYER_IN_GAME;
 
 public class StartThread extends Thread {
 
@@ -16,6 +16,8 @@ public class StartThread extends Thread {
     static final int TIMEOUT = 10;
     static final int MAX_TIMEOUTS = 3;
     private boolean isStarted = false;
+
+
 
     public StartThread(Integer gameId) {
         super("StartThread_gameId=" + gameId);
@@ -70,4 +72,4 @@ public class StartThread extends Thread {
         suspendFlag = false;
         notify();
     }
-}*/
+}
