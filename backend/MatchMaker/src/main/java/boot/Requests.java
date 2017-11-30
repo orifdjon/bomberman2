@@ -1,4 +1,4 @@
-/*
+
 package boot;
 
 import okhttp3.*;
@@ -17,7 +17,7 @@ public class Requests {
     public static final String PORT_MM = ":8080";
 
 
-    static Response create(final int playerCounter) throws IOException {
+    public static Response create(final int playerCounter) throws IOException {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, "playerCount={" + playerCounter + "}"))
@@ -26,7 +26,7 @@ public class Requests {
         return client.newCall(request).execute();
     }
 
-    static Response start(final String gameId) throws IOException {
+    public static Response start(final String gameId) throws IOException {
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
         Request request = new Request.Builder()
                 .post(RequestBody.create(mediaType, "gameId={" + gameId + "}"))
@@ -35,7 +35,7 @@ public class Requests {
         return client.newCall(request).execute();
     }
 
-    static Response checkStatus() throws IOException {
+    public static Response checkStatus() throws IOException {
         Request request = new Request.Builder()
                 .get()
                 .url(HTTP_PROTOCOL + HOST + PORT_GS + "/game/checkstatus")
@@ -45,14 +45,15 @@ public class Requests {
     }
 
 
-    void webSocketCLient(final String gameId, final String name) {
+    public void client(final String gameId, final String name) {
         String uri = WEBS_PROTOCOL + HOST + PORT_GS +
                 "/game/connect?gameId={" + gameId + "}" + "&name={" + name + "}";//адрес, по которому подключаемся
         OkHttpClient client = new OkHttpClient(); //объявляем клиента
         Request request = new Request.Builder().url(uri).build(); // какой смысл подключаться и ничего не спрашивать?
-        EchoWebSocketListener listener = new EchoWebSocketListener();// набор методов для взаимодействия
+        EchoWebSocketListener listener = new EchoWebSocketListener();// набор методов для взаимодействия (на будущее)
 
-        WebSocket ws = client.newWebSocket(request, listener);//дали понять, что клиент идет по вебсокету
+        WebSocket ws = client.newWebSocket(request, listener);//  Подключились  по вебсокету
+        ws.send("Дай поиграть");
 
         client.dispatcher().executorService().shutdown(); //поработали, надо бы закрыть соединение
 
@@ -60,4 +61,4 @@ public class Requests {
 
 
 }
-*/
+
