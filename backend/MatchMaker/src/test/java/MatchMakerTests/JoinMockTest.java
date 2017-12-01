@@ -1,6 +1,7 @@
 package MatchMakerTests;
 
 
+import MatchMakerTests.WebSocketClient.WebSocketClient;
 import boot.MMController;
 import boot.MmApplication;
 import boot.Requests;
@@ -32,12 +33,53 @@ public class JoinMockTest {
     @Autowired
     MockMvc mockMvc;
     @Test
-    public void join() throws Exception {
+    public void joinOnePlayer() throws Exception {
         mockMvc.perform(post("/matchmaker/join")
-                .content("name=bom")
+                .content("name=Кунька_Задунайский")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
                 .andExpect(status().isOk())
                 .andExpect(content().string("42"));
-    }
+        Assert.assertTrue(MMController.getGameId().equals(42));
 
+    }
+    @Test
+    public void joinFourPlayer() throws Exception {
+        mockMvc.perform(post("/matchmaker/join")
+                .content("name=Поручик_Ржевский")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().string("42"));
+
+        WebSocketClient client1 = new WebSocketClient("Поручик_Ржевский","42");
+        client1.startClient();
+
+        mockMvc.perform(post("/matchmaker/join")
+                .content("name=Кашалот_Евгенич")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().string("42"));
+
+        WebSocketClient client2 = new WebSocketClient("Кашалот_Евгенич","42");
+        client2.startClient();
+
+        mockMvc.perform(post("/matchmaker/join")
+                .content("name=Изя_Шпайцман")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().string("42"));
+
+        WebSocketClient client3 = new WebSocketClient("Изя_Шпайцман","42");
+        client3.startClient();
+
+        mockMvc.perform(post("/matchmaker/join")
+                .content("name=Адольф_Виссарионович")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
+                .andExpect(status().isOk())
+                .andExpect(content().string("42"));
+
+        WebSocketClient client4 = new WebSocketClient("Адольф_Виссарионович","42");
+        client4.startClient();
+
+        Assert.assertTrue(MMController.getGameId().equals(null));
+    }
 }

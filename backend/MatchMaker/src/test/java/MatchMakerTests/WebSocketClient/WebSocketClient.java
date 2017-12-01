@@ -1,4 +1,5 @@
-import gameserver.controller.EventHandler;
+package MatchMakerTests.WebSocketClient;
+
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.client.standard.StandardWebSocketClient;
@@ -15,7 +16,7 @@ public class WebSocketClient {
     }
 
 
-    public static void startClient() {
+    public void startClient() {
         // connection url
         String uri = "ws://localhost:8090/game/connect?gameId=" + gameId + "&name=" + name;
 

@@ -1,4 +1,4 @@
-/*
+
 
 package boot;
 
@@ -36,12 +36,6 @@ public class MMController {
     private static AtomicLong idGenerator = new AtomicLong();
     public static final int MAX_PLAYER_IN_GAME = 4;
 
-    */
-/**
-     * curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" \
-     * localhost:8080/matchmaker/join -d 'name=bomberman'
-     * we have default gameId = 42
-     *//*
 
     @RequestMapping(
             path = "join",
@@ -74,5 +68,9 @@ public class MMController {
         gameId = null;
         ConnectionQueue.getInstance().clear();
     }
+
+    public static Integer getGameId() {
+        return gameId;
+    }
 }
-*/
+

@@ -93,6 +93,7 @@
     <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-juli:8.5.23" level="project" />
     <orderEntry type="library" name="Gradle: net.minidev:accessors-smart:1.1" level="project" />
     <orderEntry type="library" name="Gradle: org.ow2.asm:asm:5.0.3" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework:spring-websocket:4.3.12.RELEASE" level="project" />
   </component>
   <component name="TestModuleProperties" production-module="backend_MatchMaker_main" />
 </module>

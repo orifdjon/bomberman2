@@ -1,4 +1,4 @@
-/*
+
 package boot;
 
 import org.slf4j.LoggerFactory;
@@ -70,4 +70,4 @@ public class StartThread extends Thread {
         suspendFlag = false;
         notify();
     }
-}*/
+}
